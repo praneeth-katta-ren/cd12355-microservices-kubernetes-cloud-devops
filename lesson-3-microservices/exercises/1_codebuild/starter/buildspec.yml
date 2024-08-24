@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Starting build at `date`
       - echo Building the Docker image...          
-      - docker build -f lesson-3-microservices/exercises/1_codebuild/starter/Dockerifile -t $IMAGE_REPO_NAME:$IMAGE_TAG lesson-3-microservices/exercises/1_codebuild/starter/
+      - docker build -f lesson-3-microservices/exercises/1_codebuild/starter/Dockerfile -t $IMAGE_REPO_NAME:$IMAGE_TAG lesson-3-microservices/exercises/1_codebuild/starter/
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG      
   post_build:
     commands:
