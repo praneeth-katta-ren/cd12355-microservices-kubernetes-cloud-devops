@@ -1,10 +1,11 @@
 #/bin/bash
-kubectl apply -f pvc.yaml
+
 kubectl apply -f pv.yaml
+kubectl apply -f pvc.yaml
 
 kubectl apply -f configmap.yaml
 kubectl apply -f secret.yaml
-kubectl apply -f deployment.yaml
+kubectl apply -f deployment_db.yaml
 
 
 kubectl exec -it postgresql-6889d46b98-bd84h -- bash
@@ -39,11 +40,9 @@ docker run --network="host" --env-file=.env test-coworking-analytics
 ---
 eksctl create cluster --name project --region us-east-1 --nodegroup-name project-nodes --node-type t3.small --nodes 1 --nodes-min 1 --nodes-max 2
 aws eks --region us-east-1 update-kubeconfig --name project
-eksctl delete cluster --name my-cluster --region us-east-1
+eksctl delete cluster --name project--region us-east-1
 
 ---
 #cloudwatch container insights
-aws iam attach-role-policy \
---role-name my-worker-node-role \
---policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy 
-aws eks create-addon --addon-name amazon-cloudwatch-observability --cluster-name my-cluster-name
+aws iam attach-role-policy --role-name eksctl-project-nodegroup-project-n-NodeInstanceRole-1K1swq368gBj --policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy 
+aws eks create-addon --addon-name amazon-cloudwatch-observability --cluster-name project

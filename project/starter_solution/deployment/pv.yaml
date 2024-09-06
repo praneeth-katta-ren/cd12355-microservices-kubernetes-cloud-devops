@@ -4,10 +4,10 @@ metadata:
   name: postgres-pv
 spec:
   capacity:
-    storage: 1Gi
+    storage: 100Mi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: standard
+  storageClassName: gp2
   hostPath:
     path: "/mnt/data"

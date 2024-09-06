@@ -10,7 +10,7 @@ from random import randint
 from config import app, db, Token
 
 
-port_number = int(os.environ.get("APP_PORT", 5144))
+port_number = int(os.environ.get("APP_PORT", 5153))
 
 
 @app.route("/health_check")
