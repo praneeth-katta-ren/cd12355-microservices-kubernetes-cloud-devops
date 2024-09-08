@@ -30,14 +30,14 @@ spec:
     spec:
       containers:
       - name: coworking
-        image: 155614359981.dkr.ecr.us-east-1.amazonaws.com/project:5
-        # image: praneethkattaren/coworking-analytics
+        image: 155614359981.dkr.ecr.us-east-1.amazonaws.com/project:1.0.7
+        # image: praneethkattaren/coworking-analytics:1.0.7
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
             path: /health_check
             port: 5153
-          initialDelaySeconds: 5
+          initialDelaySeconds: 6
           timeoutSeconds: 2
         readinessProbe:
           httpGet:
@@ -54,4 +54,11 @@ spec:
             secretKeyRef:
               name: postgresql-secret
               key: POSTGRES_PASSWORD
+        resources:
+          limits:
+            cpu: "1"
+            memory: "2Gi"
+          requests:
+            cpu: "256m"
+            memory: "1Gi"
       restartPolicy: Always

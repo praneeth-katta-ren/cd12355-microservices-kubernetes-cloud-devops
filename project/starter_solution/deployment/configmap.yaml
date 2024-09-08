@@ -6,4 +6,4 @@ data:
   DB_NAME: project
   DB_PORT: "5432"
   DB_USERNAME: postgres
-  DB_HOST: 10.96.39.3
+  DB_HOST: 10.100.241.5
